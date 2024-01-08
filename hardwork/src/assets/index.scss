@@ -1,0 +1,84 @@
+@import url(./nullstyle.scss);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:ital,wght@0,700;1,700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+h1 {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 120%;
+
+  max-width: 470px;
+}
+h2 {
+  color: #000;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 120%;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+p {
+  color: #000;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+.content {
+  flex: 1 1 auto;
+}
+input[type='password'],
+input[type='text'] {
+  background: none;
+  display: block;
+  height: 40px;
+  padding: 10px 24px;
+
+  font-size: 14px;
+
+  border-radius: 20px;
+  border: 1px solid #000;
+}
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+}
+button {
+  color: #fff;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 120%;
+
+  height: 40px;
+  padding: 10px 24px;
+
+  border-radius: 20px;
+  background: #000;
+  &:hover {
+    background: #2c2c2c;
+  }
+  &:active {
+    background: #181818;
+  }
+}
