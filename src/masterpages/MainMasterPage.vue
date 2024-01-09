@@ -22,7 +22,7 @@
               <div class="header__tools-login">
                 <router-link :to="{ name: 'login' }">Увійти</router-link>
               </div>
-              <button>Реєстрація</button>
+              <router-link :to="{ name: 'signup' }"><button>Реєстрація</button></router-link>
             </div>
           </div>
         </div>

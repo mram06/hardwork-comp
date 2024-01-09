@@ -63,6 +63,7 @@ import MainMasterPage from '@/masterpages/MainMasterPage.vue'
     display: flex;
     justify-content: space-between;
     input {
+      width: 100%;
       border: none;
     }
   }
