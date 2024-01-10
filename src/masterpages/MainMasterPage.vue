@@ -20,15 +20,32 @@
                 <img src="@/assets/img/icons/search.svg" />
               </div>
               <div class="header__tools-login">
-                <router-link :to="{ name: 'login' }">Увійти</router-link>
+                <template v-if="user">
+                  <span>{{ displayName ?? user.email }}</span>
+                  <img v-if="user.photoURL" :src="user.photoURL" />
+                  <img v-else src="@/assets/img/icons/userlogo.svg" />
+
+                  <button @click="onLogout">Вийти</button>
+                </template>
+                <template v-else>
+                  <router-link :to="{ name: 'login' }">Увійти</router-link>
+                  <router-link :to="{ name: 'signup' }"><button>Реєстрація</button></router-link>
+                </template>
               </div>
-              <router-link :to="{ name: 'signup' }"><button>Реєстрація</button></router-link>
             </div>
           </div>
         </div>
       </div>
     </header>
-    <main class="content"><slot></slot></main>
+
+    <main class="content">
+      <loading-page v-if="isLoading" />
+      <error-page v-else-if="hasError" />
+      <template v-if="!hasError">
+        <slot></slot>
+      </template>
+    </main>
+
     <footer class="footer">
       <div class="container">
         <div class="footer__body">
@@ -58,7 +75,40 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import LoadingPage from '@/components/LoadingPage.vue'
+import ErrorPage from '@/components/ErrorPage.vue'
+
+import { computed } from 'vue'
+
+import { useGeneralStore } from '@/stores/general'
+import { storeToRefs } from 'pinia'
+const generalStore = useGeneralStore()
+
+const { isLoading, hasError } = storeToRefs(generalStore)
+
+import { useAuthStore } from '@/stores/auth'
+const authStore = useAuthStore()
+const user = computed(() => authStore.getUser)
+
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const displayName = computed(() => {
+  if (user.value.displayName) {
+    const name = user.value.displayName.split(' ')
+    if (name.length === 1) return name[0]
+    else return `${name[0]} ${name[1][0]}.`
+  }
+})
+
+function onLogout() {
+  authStore.logOut()
+  router.push({
+    name: 'login'
+  })
+}
+</script>
 
 <style lang="scss" scoped>
 .header {
@@ -100,6 +150,16 @@
     gap: 24px;
     &-search {
       cursor: pointer;
+    }
+    &-login {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      img {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+      }
     }
   }
 }

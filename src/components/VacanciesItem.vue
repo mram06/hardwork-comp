@@ -91,6 +91,7 @@ defineProps({
   }
   &__info {
     display: flex;
+    align-items: center;
     gap: 24px;
     color: #747474;
   }

@@ -8,21 +8,26 @@
               <div><img src="@/assets/img/icons/facebook_black.svg" /></div>
               <div><img src="@/assets/img/icons/linkedin_black.svg" /></div>
               <div><img src="@/assets/img/icons/instagram_black.svg" /></div>
+              <div @click="loginWithGoogle">
+                <font-awesome-icon :icon="['fab', 'google']" style="color: #000000" />
+              </div>
             </div>
             <div class="login__method">
               <router-link class="top" :to="{ name: 'login' }">Увійти</router-link>
               <router-link :to="{ name: 'signup' }">Реєстрація</router-link>
             </div>
             <div class="login__input">
-              <input type="text" placeholder="Email" />
-              <input type="password" placeholder="Password" />
+              <input v-model="email" type="email" placeholder="Email" />
+              <input v-model="password" type="password" placeholder="Password" />
             </div>
 
             <label class="login__remember">
               <input type="checkbox" />
               Запам'ятай мене
             </label>
-            <button class="login__button">{{ actionTitle }}</button>
+            <button @click="onAuth(email, password)" class="login__button" :disabled="!isDataValid">
+              {{ actionTitle }}
+            </button>
           </div>
         </div>
       </div>
@@ -32,19 +37,62 @@
 
 <script setup>
 import MainMasterPage from '@/masterpages/MainMasterPage.vue'
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, computed } from 'vue'
 const props = defineProps({
   method: {
     type: String,
     default: 'login'
   }
 })
-const route = useRoute()
 
 const loginMethod = computed(() => (props.method === 'signup' ? 'signup' : 'login'))
-
 const actionTitle = computed(() => (loginMethod.value === 'login' ? 'Увійти' : 'Зареєструватися'))
+
+import { useAuthStore } from '@/stores/auth'
+const authStore = useAuthStore()
+
+import { useRoute, useRouter } from 'vue-router'
+const route = useRoute()
+const router = useRouter()
+
+const email = ref(null)
+const password = ref(null)
+
+const isDataValid = computed(() => {
+  return email.value && password.value
+})
+
+const { signUpWithWithEmailAndPassword, signInWithWithEmailAndPassword, loginWithGoogleAccount } =
+  authStore
+
+function registerWithEmailAndPassword(email, password) {
+  signUpWithWithEmailAndPassword(email, password).then(() => {
+    router.push({
+      name: 'home'
+    })
+  })
+}
+
+function loginWithEmailAndPassword(email, password) {
+  signInWithWithEmailAndPassword(email, password).then(() => {
+    router.push({
+      name: 'home'
+    })
+  })
+}
+
+function loginWithGoogle() {
+  loginWithGoogleAccount().then(() => {
+    router.push({
+      name: 'home'
+    })
+  })
+}
+
+function onAuth(email, password) {
+  if (route.name === 'login') loginWithEmailAndPassword(email, password)
+  else if (route.name === 'signup') registerWithEmailAndPassword(email, password)
+}
 </script>
 
 <style lang="scss" scoped>

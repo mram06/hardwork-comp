@@ -16,13 +16,13 @@
 a {
   line-height: 120%;
   &::before {
-    content: '🢒';
+    content: '🢒 ';
   }
   &:first-child::before {
     content: '';
   }
   &:last-child {
-    opacity: 0.5;
+    color: #808080;
   }
 }
 </style>
