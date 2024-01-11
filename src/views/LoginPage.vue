@@ -139,12 +139,12 @@ function onAuth(email, password) {
   }
 
   &__input {
+    margin: 40px 0 0 0;
     input {
       width: 100%;
       background: white;
     }
     :first-child {
-      margin: 40px 0 0 0;
     }
     :last-child {
       margin: 20px 0 0 0;

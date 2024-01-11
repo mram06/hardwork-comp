@@ -35,6 +35,13 @@ import BreadCrumbs from '@/components/BreadCrumbs.vue'
 import MainMasterPage from '@/masterpages/MainMasterPage.vue'
 import FilterPanel from '@/components/FilterPanel.vue'
 import VacanciesPanel from '@/components/VacanciesPanel.vue'
+
+import { onMounted } from 'vue'
+import { useVacanciesStore } from '@/stores/vacancies'
+const vacanciesStore = useVacanciesStore()
+onMounted(() => {
+  vacanciesStore.loadItemsList()
+})
 </script>
 
 <style lang="scss" scoped>

@@ -2,7 +2,9 @@
   <div class="item">
     <div class="row">
       <div class="item__about">
-        <div class="item__img"></div>
+        <div class="item__img">
+          <img :src="itemObj.imgSrc" alt="" />
+        </div>
         <div>
           <h3>{{ itemObj.title }}</h3>
           <div class="item__company">
@@ -16,8 +18,8 @@
     <div class="row">
       <div class="item__info">
         <div class="item__info-date">
-          {{ itemObj.date.getDay() }}-{{ itemObj.date.getMonth() + 1 }}-{{
-            itemObj.date.getFullYear()
+          {{ date.getDate() }}-{{ (date.getMonth() + 1).toString().padStart(2, '0') }}-{{
+            date.getFullYear()
           }}
         </div>
         <div class="item__info-views">
@@ -38,13 +40,15 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   itemObj: {
     type: Object,
     default: () => ({}),
     required: true
   }
 })
+
+const date = new Date(props.itemObj.date.seconds * 1000)
 </script>
 
 <style lang="scss" scoped>
@@ -71,8 +75,6 @@ defineProps({
     height: 64px;
     overflow: hidden;
     border-radius: 64px;
-
-    background-color: black;
   }
 
   &__company {

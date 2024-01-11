@@ -6,7 +6,12 @@
 
 <script setup>
 import VacanciesItem from './VacanciesItem.vue'
-import vacanciesList from '@/constants/vacancies'
+// import vacanciesList from '@/constants/vacancies'
+
+import { computed } from 'vue'
+import { useVacanciesStore } from '@/stores/vacancies'
+const vacanciesStore = useVacanciesStore()
+const vacanciesList = computed(() => vacanciesStore.getItemsList ?? [])
 </script>
 
 <style lang="scss" scoped>

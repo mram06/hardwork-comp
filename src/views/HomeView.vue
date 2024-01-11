@@ -4,7 +4,7 @@
       <div class="container">
         <div class="hero__body">
           <h1 class="hero__title">СЕРВІС ДЛЯ ПОШУКУ РОБОТИ В IT</h1>
-          <button>Всі вакансії</button>
+          <button @click="toVacancies">Всі вакансії</button>
         </div>
       </div>
     </div>
@@ -24,6 +24,12 @@
 
 <script setup>
 import MainMasterPage from '@/masterpages/MainMasterPage.vue'
+
+import { useRouter } from 'vue-router'
+const router = useRouter()
+function toVacancies() {
+  router.push({ name: 'vacancies' })
+}
 </script>
 
 <style lang="scss" scoped>
