@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="breadcrumbs-row">
     <router-link to="/">Головна</router-link>
     <router-link :to="{ name: 'vacancies' }">Вакансії</router-link>
   </div>
@@ -8,7 +8,7 @@
 <script setup></script>
 
 <style lang="scss" scoped>
-.row {
+.breadcrumbs-row {
   padding: 0 123px;
   display: flex;
   gap: 4px;

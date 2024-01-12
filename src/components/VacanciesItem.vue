@@ -6,10 +6,18 @@
           <img :src="itemObj.imgSrc" alt="" />
         </div>
         <div>
-          <h3>{{ itemObj.title }}</h3>
+          <router-link :to="{ name: 'vacancy', params: { id: itemObj.id }, props: itemObj }"
+            ><h3>{{ itemObj.title }}</h3></router-link
+          >
           <div class="item__company">
-            <div class="item__company-title">{{ itemObj.company }}</div>
-            <div class="item__company-city">{{ itemObj.city }}</div>
+            <div class="item__company-title">
+              {{ itemObj.company
+              }} <img v-if="itemObj.verified" src="@/assets/img/icons/verified.svg" />
+            </div>
+            <div class="item__company-city">
+              <font-awesome-icon :icon="['fas', 'location-dot']" style="color: #000000" />
+              {{ itemObj.city }}
+            </div>
           </div>
         </div>
       </div>
@@ -17,11 +25,7 @@
     </div>
     <div class="row">
       <div class="item__info">
-        <div class="item__info-date">
-          {{ date.getDate() }}-{{ (date.getMonth() + 1).toString().padStart(2, '0') }}-{{
-            date.getFullYear()
-          }}
-        </div>
+        <div class="item__info-date">{{ date.day }}-{{ date.month }}-{{ date.year }}</div>
         <div class="item__info-views">
           <img src="@/assets/img/icons/views.svg" /> {{ itemObj.views }}
         </div>
@@ -40,6 +44,8 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
   itemObj: {
     type: Object,
@@ -48,7 +54,14 @@ const props = defineProps({
   }
 })
 
-const date = new Date(props.itemObj.date.seconds * 1000)
+const date = computed(() => {
+  const date = new Date(props.itemObj.date.seconds * 1000)
+  return {
+    day: (date.getDate() + 1).toString().padStart(2, '0'),
+    month: (date.getMonth() + 1).toString().padStart(2, '0'),
+    year: date.getFullYear()
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -84,6 +97,9 @@ const date = new Date(props.itemObj.date.seconds * 1000)
   }
 
   &__company-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
   }
 
   &__company-city {

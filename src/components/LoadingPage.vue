@@ -1,6 +1,6 @@
 <template>
   <div class="loading-container">
-    <font-awesome-icon :icon="['fas', 'spinner']" size="6x" spin class="icon" />
+    <font-awesome-icon :icon="['fas', 'circle-notch']" size="6x" style="color: #5278f2;" spin  class="icon"/>
   </div>
 </template>
 

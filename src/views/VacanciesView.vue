@@ -53,7 +53,7 @@ onMounted(() => {
 }
 .search {
   &__body {
-    background: url('@/assets/img/background/background_blur.png') 0 0 / auto 100% no-repeat;
+    background: url('@/assets/img/background/background_blur.jpg') 0 0 / auto 100% no-repeat;
     height: 200px;
     margin: 20px 0 0 0;
     padding: 80px 0;

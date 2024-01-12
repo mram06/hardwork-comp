@@ -24,6 +24,15 @@ const router = createRouter({
       component: VacanciesView
     },
     {
+      path: '/vacancies/:id',
+      name: 'vacancy',
+      meta: {
+        requireAuth: false
+      },
+      component: () => import('@/views/VacancyPage.vue')
+    },
+
+    {
       path: '/company',
       name: 'company',
       meta: {

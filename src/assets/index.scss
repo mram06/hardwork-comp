@@ -73,28 +73,28 @@ input[type='checkbox'] {
   height: 20px;
 }
 button {
-  color: #fff;
+  color: #fff !important;
 
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 14px !important;
+  font-weight: 700 !important;
   line-height: 120%;
 
   height: 40px;
   padding: 10px 24px;
 
   border-radius: 20px;
-  background: #000;
+  background: #000 !important;
   @media only screen and (min-width: 500px) {
     &:hover {
-      background: #2c2c2c;
+      background: #2c2c2c !important;
     }
   }
 
   &:active {
-    background: #181818;
+    background: #181818 !important;
   }
   &:disabled {
-    background: #a0a0a0;
+    background: #a0a0a0 !important;
   }
 }

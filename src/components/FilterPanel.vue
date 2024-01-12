@@ -5,7 +5,7 @@
       <h3>Професія</h3>
       <div>
         <label v-for="job in professions" :key="job">
-          <input type="checkbox" />
+          <input type="checkbox" :value="job" />
           {{ job }}
         </label>
       </div>
