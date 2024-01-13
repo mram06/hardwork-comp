@@ -74,4 +74,27 @@ function toVacancies() {
     }
   }
 }
+@media only screen and (max-width: 980px) {
+  .hero {
+    &__body {
+      padding: 250px 0 0 20px;
+    }
+  }
+}
+@media only screen and (max-width: 760px) {
+  .hero {
+    &__body {
+      background: url('@/assets/img/background/background.png') 0 0/100% auto no-repeat;
+      height: auto;
+      padding: 250px 0 0 5px;
+    }
+  }
+  .subscribe {
+    &__body {
+      text-align: center;
+      background: #e1e1e1;
+      padding: 48px 0;
+    }
+  }
+}
 </style>

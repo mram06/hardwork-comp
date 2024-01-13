@@ -159,4 +159,16 @@ function onAuth(email, password) {
     width: 100%;
   }
 }
+@media only screen and (max-width: 980px) {
+}
+@media only screen and (max-width: 760px) {
+  .login {
+    &__body {
+      background: url('@/assets/img/background/background.png') 0 0/100% auto no-repeat;
+      height: 500px;
+      padding: 50px 20px 0 20px;
+      margin: 0 auto;
+    }
+  }
+}
 </style>

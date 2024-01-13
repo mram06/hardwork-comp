@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <header class="header">
+    <header :class="['header', { open: isOpen }]">
       <div class="container">
         <div class="header__body">
           <div class="header__row">
@@ -32,6 +32,9 @@
                   <router-link :to="{ name: 'signup' }"><button>Реєстрація</button></router-link>
                 </template>
               </div>
+            </div>
+            <div @click="onOpen" class="header__burger-btn">
+              <span></span><span></span><span> </span>
             </div>
           </div>
         </div>
@@ -79,7 +82,7 @@
 import LoadingPage from '@/components/LoadingPage.vue'
 import ErrorPage from '@/components/ErrorPage.vue'
 
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import { useGeneralStore } from '@/stores/general'
 import { storeToRefs } from 'pinia'
@@ -107,6 +110,11 @@ function onLogout() {
   router.push({
     name: 'login'
   })
+}
+
+const isOpen = ref(false)
+function onOpen() {
+  isOpen.value = !isOpen.value
 }
 </script>
 
@@ -162,6 +170,46 @@ function onLogout() {
       }
     }
   }
+  &__burger-btn {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    span {
+      position: absolute;
+      left: 5px;
+
+      transition:
+        transform 0.5s,
+        opacity 0.5s,
+        background-color 0.5s;
+
+      width: 30px;
+      height: 3px;
+      background-color: #040404;
+      &:nth-child(1) {
+        transform: translateY(6px);
+      }
+      &:nth-child(2) {
+        transform: translateY(18px);
+      }
+      &:nth-child(3) {
+        transform: translateY(30px);
+      }
+    }
+  }
+}
+.header.open {
+  .header__burger-btn span:nth-child(1) {
+    transform: translateY(18px) rotate(-45deg);
+  }
+  .header__burger-btn span:nth-child(2) {
+    opacity: 0;
+  }
+  .header__burger-btn span:nth-child(3) {
+    transform: translateY(18px) rotate(45deg);
+  }
 }
 
 .footer {
@@ -207,6 +255,70 @@ function onLogout() {
   &__socials {
     display: flex;
     gap: 20px;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .header {
+    &__body {
+      padding: 12px 20px;
+    }
+  }
+  .footer {
+    &__body {
+      padding: 32px 20px;
+    }
+  }
+}
+@media only screen and (max-width: 760px) {
+  .header {
+    &__body {
+      padding: 12px 10px;
+    }
+    &__burger-btn {
+      display: block;
+    }
+    &__menu {
+      position: absolute;
+      width: 350px;
+      height: 100vh;
+      left: -350px;
+      top: 0;
+      background-color: violet;
+      padding: 60px 20px 20px 20px;
+      transition: transform 0.5s;
+      ul {
+        display: block;
+        a {
+          font-size: 22px;
+          display: block;
+          padding: 10px 0;
+        }
+      }
+    }
+    .open &__menu {
+      transform: translateX(100%);
+    }
+  }
+  .footer {
+    &__body {
+      padding: 32px 10px;
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  .header {
+    &__tools {
+      position: absolute;
+      left: -350px;
+      &-login {
+        justify-content: space-between;
+        gap: 12px;
+      }
+    }
+    &.open &__tools {
+      left: 10px;
+      transition: left 0.5s;
+    }
   }
 }
 </style>
