@@ -25,4 +25,9 @@ a {
     color: #808080;
   }
 }
+@media only screen and (max-width: 980px) {
+  .breadcrumbs-row {
+    padding: 0 10px;
+  }
+}
 </style>

@@ -51,7 +51,7 @@ function toVacancies() {
   &__body {
     text-align: center;
     background: #e1e1e1;
-    padding: 48px 0;
+    padding: 48px 10px;
   }
 
   &__title {
@@ -85,15 +85,8 @@ function toVacancies() {
   .hero {
     &__body {
       background: url('@/assets/img/background/background.png') 0 0/100% auto no-repeat;
-      height: auto;
-      padding: 250px 0 0 5px;
-    }
-  }
-  .subscribe {
-    &__body {
-      text-align: center;
-      background: #e1e1e1;
-      padding: 48px 0;
+      height: 500px;
+      padding: 150px 10px 0 10px;
     }
   }
 }

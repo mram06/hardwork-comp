@@ -11,8 +11,8 @@
           >
           <div class="item__company">
             <div class="item__company-title">
-              {{ itemObj.company
-              }} <img v-if="itemObj.verified" src="@/assets/img/icons/verified.svg" />
+              {{ itemObj.company }}
+              <img v-if="itemObj.verified" src="@/assets/img/icons/verified.svg" />
             </div>
             <div class="item__company-city">
               <font-awesome-icon :icon="['fas', 'location-dot']" style="color: #000000" />
@@ -120,6 +120,11 @@ const date = computed(() => {
     &-save {
       cursor: pointer;
     }
+  }
+}
+@media only screen and (max-width: 760px) {
+  .item {
+    padding: 10px;
   }
 }
 </style>

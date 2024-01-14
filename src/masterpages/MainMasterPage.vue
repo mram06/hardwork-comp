@@ -120,7 +120,13 @@ function onOpen() {
 
 <style lang="scss" scoped>
 .header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
   &__body {
+    background-color: white;
     padding: 12px 123px;
 
     font-family: 'Montserrat', sans-serif;
@@ -163,6 +169,10 @@ function onOpen() {
       display: flex;
       gap: 24px;
       align-items: center;
+      span {
+        max-width: 120px;
+        overflow: hidden;
+      }
       img {
         width: 46px;
         height: 46px;
@@ -200,6 +210,11 @@ function onOpen() {
     }
   }
 }
+
+main {
+  padding-top: 64px;
+}
+
 .header.open {
   .header__burger-btn span:nth-child(1) {
     transform: translateY(18px) rotate(-45deg);
@@ -231,6 +246,7 @@ function onOpen() {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
   }
 
   &__logo {
@@ -302,6 +318,9 @@ function onOpen() {
   .footer {
     &__body {
       padding: 32px 10px;
+    }
+    &__row {
+      flex-wrap: wrap;
     }
   }
 }

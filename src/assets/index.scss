@@ -12,12 +12,18 @@ h1 {
   line-height: 120%;
 
   max-width: 470px;
+  @media only screen and (max-width: 760px) {
+    font-size: 48px;
+  }
 }
 h2 {
   color: #000;
   font-size: 36px;
   font-weight: 700;
   line-height: 120%;
+  @media only screen and (max-width: 760px) {
+    font-size: 24px;
+  }
 }
 h3 {
   color: #000;
@@ -27,6 +33,9 @@ h3 {
   font-style: normal;
   font-weight: 700;
   line-height: 120%;
+  @media only screen and (max-width: 760px) {
+    font-size: 18px;
+  }
 }
 a {
   text-decoration: none;

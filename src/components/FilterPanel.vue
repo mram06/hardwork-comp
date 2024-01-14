@@ -1,6 +1,10 @@
 <template>
-  <aside>
+  <aside :class="{ open: isOpen }">
     <h2>Фільтри</h2>
+    <div @click="oncloseFilter" class="close-button">
+      <span></span>
+      <span></span>
+    </div>
     <div class="filter__category">
       <h3>Професія</h3>
       <div>
@@ -143,6 +147,18 @@
 
 <script setup>
 import { professions } from '@/constants/filter'
+
+const props = defineProps({
+  isOpen: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const emit = defineEmits()
+function oncloseFilter() {
+  emit('close-filter')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -158,5 +174,36 @@ label {
 }
 .filter__category {
   margin: 40px 0 0 0;
+}
+.close-button {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  display: none;
+  span {
+    position: absolute;
+    left: 5px;
+
+    transition:
+      transform 0.5s,
+      opacity 0.5s,
+      background-color 0.5s;
+
+    width: 30px;
+    height: 3px;
+    background-color: #040404;
+    &:nth-child(1) {
+      rotate: 45deg;
+    }
+    &:nth-child(2) {
+      rotate: -45deg;
+    }
+  }
+}
+@media only screen and (max-width: 760px) {
+  .close-button {
+    display: block;
+  }
 }
 </style>

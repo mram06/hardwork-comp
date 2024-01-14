@@ -21,8 +21,11 @@
 
     <div>
       <div class="container">
+        <div class="filter-button">
+          <button @click="openFilter">Фільтри</button>
+        </div>
         <div class="main-row">
-          <filter-panel />
+          <filter-panel @close-filter="openFilter" :is-open="isOpen" />
           <vacancies-panel />
         </div>
       </div>
@@ -38,7 +41,14 @@ import VacanciesPanel from '@/components/VacanciesPanel.vue'
 
 import { onMounted } from 'vue'
 import { useVacanciesStore } from '@/stores/vacancies'
+import { ref } from 'vue'
 const vacanciesStore = useVacanciesStore()
+
+const isOpen = ref(false)
+function openFilter() {
+  isOpen.value = !isOpen.value
+}
+
 onMounted(() => {
   vacanciesStore.loadItemsList()
 })
@@ -56,7 +66,7 @@ onMounted(() => {
     background: url('@/assets/img/background/background_blur.jpg') 0 0 / auto 100% no-repeat;
     height: 200px;
     margin: 20px 0 0 0;
-    padding: 80px 0;
+    padding: 80px 10px;
   }
 
   &__input {
@@ -76,6 +86,38 @@ onMounted(() => {
     }
   }
 }
-.container {
+.filter-button {
+  display: none;
+  justify-content: end;
+  padding: 20px 10px;
+}
+
+@media only screen and (max-width: 980px) {
+}
+@media only screen and (max-width: 760px) {
+  .main-row {
+    padding: 0 10px 20px 10px;
+  }
+  .filter-button {
+    display: flex;
+  }
+  aside {
+    position: fixed;
+    overflow-y: auto;
+    z-index: 1;
+    height: 100vh;
+    left: 0;
+    transition: top 0.5s;
+    top: 100vh;
+    background: #e1e1e1;
+
+    border-radius: 25px 25px 0 0;
+    width: 100%;
+    padding: 20px 10px 10px 10px;
+  }
+  aside.open {
+    transition: top 0.5s;
+    top: 150px;
+  }
 }
 </style>
