@@ -62,7 +62,49 @@ const router = createRouter({
       meta: {
         requireAuth: false
       },
-      component: () => import('@/views/LoginPage.vue')
+      component: () => import('../views/LoginPage.vue')
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      meta: {
+        requireAuth: true
+      },
+      component: () => import('@/views/UserProfile.vue'),
+      children: [
+        {
+          path: 'manage',
+          name: 'profileManage',
+          meta: {
+            requireAuth: true
+          },
+          component: () => import('@/components/profile/ProfileManage.vue')
+        },
+        {
+          path: 'saved',
+          name: 'profileSaved',
+          meta: {
+            requireAuth: true
+          },
+          component: () => import('@/components/profile/ProfileSaved.vue')
+        },
+        {
+          path: 'create-resume',
+          name: 'createResume',
+          meta: {
+            requireAuth: true
+          },
+          component: () => import('@/components/profile/CreateResume.vue')
+        },
+        {
+          path: 'chat',
+          name: 'chat',
+          meta: {
+            requireAuth: true
+          },
+          component: () => import('@/components/profile/ProfileChat.vue')
+        }
+      ]
     },
     {
       path: '/signup',
@@ -88,11 +130,12 @@ router.beforeEach(async (to) => {
   if (to.meta?.requireAuth) {
     if (!isAuthenticated())
       return {
-        name: 'login'
+        name: 'login',
+        query: { redirect: to.fullPath }
       }
     if (!isRouteAvailable(to)) {
       return {
-        name: 'not-found'
+        name: 'notFound'
       }
     }
   }

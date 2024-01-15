@@ -142,6 +142,7 @@
         </label>
       </div>
     </div>
+    <button @click="oncloseFilter" class="apply-button">Застосувати</button>
   </aside>
 </template>
 
@@ -201,6 +202,10 @@ label {
     }
   }
 }
+.apply-button {
+  margin: 20px 0 0 0;
+}
+
 @media only screen and (max-width: 760px) {
   .close-button {
     display: block;

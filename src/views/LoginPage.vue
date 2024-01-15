@@ -5,15 +5,28 @@
         <div class="login__body">
           <div class="login__container">
             <div class="login__socials">
-              <div><img src="@/assets/img/icons/facebook_black.svg" /></div>
-              <div><img src="@/assets/img/icons/linkedin_black.svg" /></div>
-              <div><img src="@/assets/img/icons/instagram_black.svg" /></div>
+              <div>
+                <font-awesome-icon :icon="['fab', 'facebook']" size="2xl" style="color: #000000" />
+                <!-- <img src="@/assets/img/icons/facebook_black.svg" /> -->
+              </div>
+              <div>
+                <font-awesome-icon :icon="['fab', 'linkedin']" size="2xl" style="color: #000000" />
+                <!-- <img src="@/assets/img/icons/linkedin_black.svg" /> -->
+              </div>
+              <div>
+                <font-awesome-icon
+                  :icon="['fab', 'square-instagram']"
+                  size="2xl"
+                  style="color: #000000"
+                />
+                <!-- <img src="@/assets/img/icons/instagram_black.svg" /> -->
+              </div>
               <div @click="loginWithGoogle">
-                <font-awesome-icon :icon="['fab', 'google']" style="color: #000000" />
+                <font-awesome-icon :icon="['fab', 'google']" size="2xl" style="color: #000000" />
               </div>
             </div>
             <div class="login__method">
-              <router-link class="top" :to="{ name: 'login' }">Увійти</router-link>
+              <router-link :to="{ name: 'login' }">Увійти</router-link>
               <router-link :to="{ name: 'signup' }">Реєстрація</router-link>
             </div>
             <div class="login__input">
@@ -59,7 +72,7 @@ const email = ref(null)
 const password = ref(null)
 
 const isDataValid = computed(() => {
-  return email.value && password.value
+  return email.value && password.value?.length >= 8
 })
 
 const { signUpWithWithEmailAndPassword, signInWithWithEmailAndPassword, loginWithGoogleAccount } =
@@ -98,7 +111,7 @@ function onAuth(email, password) {
 <style lang="scss" scoped>
 .login {
   &__body {
-    background: url('@/assets/img/background/background.png') top right no-repeat;
+    background: url('@/assets/img/background/background.svg') top right no-repeat;
     height: 809px;
     padding: 227px 0 0 192px;
   }
@@ -164,9 +177,11 @@ function onAuth(email, password) {
 @media only screen and (max-width: 760px) {
   .login {
     &__body {
-      background: url('@/assets/img/background/background.png') 0 0/100% auto no-repeat;
+      background: url('@/assets/img/background/background.svg') 0 0/100% auto no-repeat;
       height: 500px;
       padding: 50px 20px 0 20px;
+    }
+    &__container {
       margin: 0 auto;
     }
   }

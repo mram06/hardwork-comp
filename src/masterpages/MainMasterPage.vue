@@ -22,8 +22,8 @@
               <div class="header__tools-login">
                 <template v-if="user">
                   <span>{{ displayName ?? user.email }}</span>
-                  <img v-if="user.photoURL" :src="user.photoURL" />
-                  <img v-else src="@/assets/img/icons/userlogo.svg" />
+                  <img @click="toProfile" v-if="user.photoURL" :src="user.photoURL" />
+                  <img @click="toProfile" v-else src="@/assets/img/icons/userlogo.svg" />
 
                   <button @click="onLogout">Вийти</button>
                 </template>
@@ -111,6 +111,9 @@ function onLogout() {
     name: 'login'
   })
 }
+function toProfile() {
+  router.push({ name: 'profile' })
+}
 
 const isOpen = ref(false)
 function onOpen() {
@@ -174,6 +177,7 @@ function onOpen() {
         overflow: hidden;
       }
       img {
+        cursor: pointer;
         width: 46px;
         height: 46px;
         border-radius: 50%;

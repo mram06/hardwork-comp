@@ -81,6 +81,12 @@ input[type='checkbox'] {
   width: 20px;
   height: 20px;
 }
+textarea {
+  border-radius: 20px;
+  border: 1px solid #000 !important;
+  background: #fff;
+  padding: 10px 24px;
+}
 button {
   color: #fff !important;
 

@@ -39,7 +39,7 @@ function toVacancies() {
   }
   &__body {
     height: 809px;
-    background: url('@/assets/img/background/background.png') top right no-repeat;
+    background: url('@/assets/img/background/background.svg') top right no-repeat;
     padding: 250px 0 0 132px;
   }
 
@@ -84,7 +84,7 @@ function toVacancies() {
 @media only screen and (max-width: 760px) {
   .hero {
     &__body {
-      background: url('@/assets/img/background/background.png') 0 0/100% auto no-repeat;
+      background: url('@/assets/img/background/background.svg') 0 0/100% auto no-repeat;
       height: 500px;
       padding: 150px 10px 0 10px;
     }

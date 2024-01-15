@@ -22,7 +22,14 @@
     <div>
       <div class="container">
         <div class="filter-button">
-          <button @click="openFilter">Фільтри</button>
+          <button @click="openFilter">
+            <font-awesome-icon
+              :icon="['fas', 'caret-down']"
+              flip="vertical"
+              style="color: #ffffff"
+            />
+            Фільтри
+          </button>
         </div>
         <div class="main-row">
           <filter-panel @close-filter="openFilter" :is-open="isOpen" />
@@ -89,10 +96,13 @@ onMounted(() => {
 .filter-button {
   display: none;
   justify-content: end;
-  padding: 20px 10px;
+  padding: 20px;
 }
 
 @media only screen and (max-width: 980px) {
+  .main-row {
+    padding: 20px 10px;
+  }
 }
 @media only screen and (max-width: 760px) {
   .main-row {
@@ -113,11 +123,11 @@ onMounted(() => {
 
     border-radius: 25px 25px 0 0;
     width: 100%;
-    padding: 20px 10px 10px 10px;
+    padding: 20px 10px 250px 10px;
   }
   aside.open {
     transition: top 0.5s;
-    top: 150px;
+    top: 110px;
   }
 }
 </style>

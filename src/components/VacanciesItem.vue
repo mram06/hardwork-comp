@@ -80,7 +80,6 @@ const date = computed(() => {
   &__about {
     display: flex;
     gap: 20px;
-    margin: 12px 0 0 0;
   }
 
   &__img {
@@ -126,5 +125,7 @@ const date = computed(() => {
   .item {
     padding: 10px;
   }
+}
+@media only screen and (max-width: 480px) {
 }
 </style>
