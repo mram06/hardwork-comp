@@ -82,7 +82,7 @@
 import LoadingPage from '@/components/LoadingPage.vue'
 import ErrorPage from '@/components/ErrorPage.vue'
 
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 
 import { useGeneralStore } from '@/stores/general'
 import { storeToRefs } from 'pinia'
@@ -119,6 +119,10 @@ const isOpen = ref(false)
 function onOpen() {
   isOpen.value = !isOpen.value
 }
+
+onMounted(() => {
+  document.title = 'Hardwork'
+})
 </script>
 
 <style lang="scss" scoped>
@@ -292,7 +296,7 @@ main {
 @media only screen and (max-width: 760px) {
   .header {
     &__body {
-      padding: 12px 10px;
+      padding: 12px 20px;
     }
     &__burger-btn {
       display: block;
@@ -321,7 +325,7 @@ main {
   }
   .footer {
     &__body {
-      padding: 32px 10px;
+      padding: 32px 20px;
     }
     &__row {
       flex-wrap: wrap;

@@ -86,7 +86,7 @@ function toVacancies() {
     &__body {
       background: url('@/assets/img/background/background.svg') 0 0/100% auto no-repeat;
       height: 500px;
-      padding: 150px 10px 0 10px;
+      padding: 150px 20px 0 20px;
     }
   }
 }

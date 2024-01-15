@@ -73,7 +73,7 @@ onMounted(() => {
     background: url('@/assets/img/background/background_blur.jpg') 0 0 / auto 100% no-repeat;
     height: 200px;
     margin: 20px 0 0 0;
-    padding: 80px 10px;
+    padding: 80px 20px;
   }
 
   &__input {
@@ -106,7 +106,7 @@ onMounted(() => {
 }
 @media only screen and (max-width: 760px) {
   .main-row {
-    padding: 0 10px 20px 10px;
+    padding: 0 14px 20px 14px;
   }
   .filter-button {
     display: flex;

@@ -167,7 +167,6 @@ h3 {
   margin: 0 0 20px 0;
 }
 label {
-  display: block;
   margin: 13px 0 0 0;
   &:first-child {
     margin: 0;
@@ -203,11 +202,12 @@ label {
   }
 }
 .apply-button {
+  display: none;
   margin: 20px 0 0 0;
 }
 
 @media only screen and (max-width: 760px) {
-  .close-button {
+  .close-button, .apply-button {
     display: block;
   }
 }

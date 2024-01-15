@@ -164,7 +164,6 @@ function onAuth(email, password) {
     }
   }
   &__remember {
-    display: block;
     margin: 20px 0 0 0;
   }
   &__button {

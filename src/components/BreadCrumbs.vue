@@ -16,7 +16,7 @@
 a {
   line-height: 120%;
   &::before {
-    content: '🢒 ';
+    content: '\f424 ';
   }
   &:first-child::before {
     content: '';
@@ -27,7 +27,7 @@ a {
 }
 @media only screen and (max-width: 980px) {
   .breadcrumbs-row {
-    padding: 0 10px;
+    padding: 0 20px;
   }
 }
 </style>

@@ -23,7 +23,7 @@
       </div>
       <h3 class="item__salary">$ {{ itemObj.salary }}</h3>
     </div>
-    <div class="row">
+    <div class="row item__bottom">
       <div class="item__info">
         <div class="item__info-date">{{ date.day }}-{{ date.month }}-{{ date.year }}</div>
         <div class="item__info-views">
@@ -124,6 +124,13 @@ const date = computed(() => {
 @media only screen and (max-width: 760px) {
   .item {
     padding: 10px;
+    &__bottom {
+      flex-direction: column;
+      gap: 20px;
+    }
+    &__actions {
+      align-self: flex-end;
+    }
   }
 }
 @media only screen and (max-width: 480px) {
