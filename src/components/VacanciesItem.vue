@@ -37,7 +37,7 @@
         <div class="item__actions-save">
           <font-awesome-icon class="fa-lg" :icon="['far', 'heart']" style="color: #000000" />
         </div>
-        <button>Відгукнутися</button>
+        <button>{{ $t('buttons.respond') }}</button>
       </div>
     </div>
   </div>
@@ -134,5 +134,10 @@ const date = computed(() => {
   }
 }
 @media only screen and (max-width: 480px) {
+  .item {
+    &__about {
+      gap: 10px;
+    }
+  }
 }
 </style>

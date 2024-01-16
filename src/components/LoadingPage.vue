@@ -17,7 +17,7 @@
   background: rgba(255, 255, 255, 0.8);
   .icon {
     position: absolute;
-    left: 45%;
+    left: 44%;
     top: 50%;
     transform: translate(-50%, -50%);
   }

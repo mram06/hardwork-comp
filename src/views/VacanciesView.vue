@@ -12,8 +12,12 @@
       <div class="container">
         <div class="search__body">
           <div class="search__input">
-            <input type="text" placeholder="Ким хочете працювати?" />
-            <button>Пошук</button>
+            <input
+              v-model="searchInputVal"
+              type="text"
+              :placeholder="$t('pages.vacancies.whichProfession')"
+            />
+            <button @click="onSearch">{{ $t('buttons.search') }}</button>
           </div>
         </div>
       </div>
@@ -28,7 +32,7 @@
               flip="vertical"
               style="color: #ffffff"
             />
-            Фільтри
+            {{ $t('buttons.filters') }}
           </button>
         </div>
         <div class="main-row">
@@ -59,6 +63,11 @@ function openFilter() {
 onMounted(() => {
   vacanciesStore.loadItemsList()
 })
+
+const searchInputVal = ref(null)
+function onSearch() {
+  vacanciesStore.addToFilter(searchInputVal)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -119,7 +128,7 @@ onMounted(() => {
     left: 0;
     transition: top 0.5s;
     top: 100vh;
-    background: #e1e1e1;
+    background: #a0a0a0;
 
     border-radius: 25px 25px 0 0;
     width: 100%;

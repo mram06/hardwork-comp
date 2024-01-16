@@ -3,18 +3,18 @@
     <div class="hero">
       <div class="container">
         <div class="hero__body">
-          <h1 class="hero__title">СЕРВІС ДЛЯ ПОШУКУ РОБОТИ В IT</h1>
-          <button @click="toVacancies">Всі вакансії</button>
+          <h1 class="hero__title">{{ $t('pages.home.title') }}</h1>
+          <button @click="toVacancies">{{ $t('buttons.allVacancies') }}</button>
         </div>
       </div>
     </div>
     <div class="subscribe">
       <div class="container">
         <div class="subscribe__body">
-          <h2 class="subscribe__title">Підписатися на розсилку</h2>
+          <h2 class="subscribe__title">{{ $t('pages.home.subscribe') }}</h2>
           <div class="subscribe__input">
             <input type="text" placeholder="Email" />
-            <button>Підписатися</button>
+            <button>{{ $t('buttons.subscribe') }}</button>
           </div>
         </div>
       </div>

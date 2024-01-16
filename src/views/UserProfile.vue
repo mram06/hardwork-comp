@@ -4,10 +4,16 @@
       <div class="container">
         <div class="profile__body">
           <div class="profile__tabs">
-            <router-link :to="{ name: 'profileManage' }">Профіль</router-link>
-            <router-link :to="{ name: 'profileSaved' }">Обране</router-link>
-            <router-link :to="{ name: 'createResume' }">Створити резюме</router-link>
-            <router-link :to="{ name: 'chat' }">Чат</router-link>
+            <router-link :to="{ name: 'profileManage' }">{{
+              $t('pages.profile.tabs.profile')
+            }}</router-link>
+            <router-link :to="{ name: 'profileSaved' }">{{
+              $t('pages.profile.tabs.saved')
+            }}</router-link>
+            <router-link :to="{ name: 'createResume' }">{{
+              $t('pages.profile.tabs.createResume')
+            }}</router-link>
+            <router-link :to="{ name: 'chat' }">{{ $t('pages.profile.tabs.chat') }}</router-link>
           </div>
           <div class="profile__user">
             <img v-if="user.photoURL" :src="user.photoURL" class="profile__user-photo" />
@@ -51,7 +57,7 @@ const displayName = computed(() => {
   &__tabs {
     display: flex;
     a {
-      display: block;
+      text-align: center;
       cursor: pointer;
       font-family: 'Montserrat', sans-serif;
       font-size: 14px;

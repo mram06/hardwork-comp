@@ -1,7 +1,7 @@
 <template>
   <div class="breadcrumbs-row">
-    <router-link to="/">Головна</router-link>
-    <router-link :to="{ name: 'vacancies' }">Вакансії</router-link>
+    <router-link to="/">{{$t('breadcrumbs.home')}}</router-link>
+    <router-link :to="{ name: 'vacancies' }">{{$t('breadcrumbs.vacancies')}}</router-link>
   </div>
 </template>
 
@@ -16,7 +16,8 @@
 a {
   line-height: 120%;
   &::before {
-    content: '\f424 ';
+    content: url('@/assets/img/icons/triangle.svg');
+    transform: translateY(10%)
   }
   &:first-child::before {
     content: '';

@@ -2,45 +2,47 @@
   <div class="manage">
     <div class="manage__container">
       <div class="manage__row">
-        <div class="manage__title">Ім'я</div>
+        <div class="manage__title">{{ $t('pages.profile.name') }}</div>
         <div class="manage__input">
           <input v-model="userInfo.name" type="text" placeholder="Ім'я" />
         </div>
       </div>
 
       <div class="manage__row">
-        <div class="manage__title">Прізвище</div>
+        <div class="manage__title">{{ $t('pages.profile.lastname') }}</div>
         <div class="manage__input">
           <input v-model="userInfo.lastname" type="text" placeholder="Прізвище" />
         </div>
       </div>
 
       <div class="manage__row">
-        <div class="manage__title">Ел. пошта</div>
+        <div class="manage__title">{{ $t('pages.profile.email') }}</div>
         <div class="manage__input">
           <input v-model="userInfo.email" type="text" placeholder="Email" />
         </div>
       </div>
 
       <div class="manage__row">
-        <div class="manage__title">Телефон</div>
+        <div class="manage__title">{{ $t('pages.profile.phone') }}</div>
         <div class="manage__input">
           <input v-model="userInfo.phone" type="text" placeholder="+380(0" />
         </div>
       </div>
 
       <div class="manage__row">
-        <div class="manage__title textarea">Супровідний лист</div>
+        <div class="manage__title textarea">{{ $t('pages.profile.aboutMe') }}</div>
         <div class="manage__input">
           <textarea
             v-model="userInfo.about"
             cols="30"
             rows="10"
-            placeholder="Напишіть супровідний лист..."
+            :placeholder="$t('pages.profile.writeAboutMe')"
           ></textarea>
         </div>
       </div>
-      <div class="action-button"><button>Зберегти</button></div>
+      <div class="action-button">
+        <button>{{ $t('buttons.save') }}</button>
+      </div>
     </div>
   </div>
 </template>

@@ -1,153 +1,154 @@
 <template>
   <aside :class="{ open: isOpen }">
-    <h2>Фільтри</h2>
+    <h2>{{ $t('pages.filter.title') }}</h2>
     <div @click="oncloseFilter" class="close-button">
       <span></span>
       <span></span>
     </div>
     <div class="filter__category">
-      <h3>Професія</h3>
+      <h3>{{ $t('pages.filter.profession') }}</h3>
       <div>
         <label v-for="job in professions" :key="job">
-          <input type="checkbox" :value="job" />
+          <input v-model="filterObj.profession" type="checkbox" :value="job" />
           {{ job }}
         </label>
       </div>
     </div>
 
     <div class="filter__category">
-      <h3>Досвід роботи</h3>
+      <h3>{{ $t('pages.filter.experience.title') }}</h3>
       <div>
         <label>
-          <input type="checkbox" value="0" />
-          Без досвіду
+          <input v-model="filterObj.experience" type="checkbox" value="0" />
+          {{ $t('pages.filter.experience.noExperience') }}
         </label>
         <label>
-          <input type="checkbox" value="1" />
-          1 рік
+          <input v-model="filterObj.experience" type="checkbox" value="1" />
+          {{ $t('pages.filter.experience.1year') }}
         </label>
         <label>
-          <input type="checkbox" value="2" />
-          2 роки
+          <input v-model="filterObj.experience" type="checkbox" value="2" />
+          {{ $t('pages.filter.experience.2year') }}
         </label>
         <label>
-          <input type="checkbox" value="3" />
-          3 роки
+          <input v-model="filterObj.experience" type="checkbox" value="3" />
+          {{ $t('pages.filter.experience.3year') }}
         </label>
         <label>
-          <input type="checkbox" value="5" />
-          5 років
+          <input v-model="filterObj.experience" type="checkbox" value="5" />
+          {{ $t('pages.filter.experience.5year') }}
         </label>
       </div>
     </div>
 
     <div class="filter__category">
-      <h3>Формат роботи</h3>
+      <h3>{{ $t('pages.filter.format.title') }}</h3>
       <div>
         <label>
-          <input type="checkbox" value="remote" />
-          Віддалено
+          <input v-model="filterObj.format" type="checkbox" value="remote" />
+          {{ $t('pages.filter.format.remote') }}
         </label>
         <label>
-          <input type="checkbox" value="office" />
-          Офіс
+          <input v-model="filterObj.format" type="checkbox" value="office" />
+          {{ $t('pages.filter.format.office') }}
         </label>
         <label>
-          <input type="checkbox" value="hybrid" />
-          Гібридний
+          <input v-model="filterObj.format" type="checkbox" value="hybrid" />
+          {{ $t('pages.filter.format.hybrid') }}
         </label>
       </div>
     </div>
 
     <div class="filter__category">
-      <h3>Тип зайнятості</h3>
+      <h3>{{ $t('pages.filter.type.title') }}</h3>
       <div>
         <label>
-          <input type="checkbox" value="fulltime" />
-          Повна зайнятість
+          <input v-model="filterObj.type" type="checkbox" value="fulltime" />
+          {{ $t('pages.filter.type.fulltime') }}
         </label>
         <label>
-          <input type="checkbox" value="parttime" />
-          Неповна зайнятість
+          <input v-model="filterObj.type" type="checkbox" value="parttime" />
+          {{ $t('pages.filter.type.parttime') }}
         </label>
         <label>
-          <input type="checkbox" value="project" />
-          Проєктна робота
+          <input v-model="filterObj.type" type="checkbox" value="project" />
+          {{ $t('pages.filter.type.project') }}
         </label>
       </div>
     </div>
 
     <div class="filter__category">
-      <h3>Мова</h3>
+      <h3>{{ $t('pages.filter.language.title') }}</h3>
       <div>
         <label>
-          <input type="checkbox" value="english" />
-          Англійська
+          <input v-model="filterObj.language" type="checkbox" value="english" />
+          {{ $t('pages.filter.language.english') }}
         </label>
         <label>
-          <input type="checkbox" value="ukrainian" />
-          Українська
+          <input v-model="filterObj.language" type="checkbox" value="ukrainian" />
+          {{ $t('pages.filter.language.ukrainian') }}
         </label>
       </div>
     </div>
 
     <div class="filter__category">
-      <h3>Місто</h3>
+      <h3>{{ $t('pages.filter.city.title') }}</h3>
       <div>
         <label>
-          <input type="checkbox" value="kyiv" />
-          Київ
+          <input v-model="filterObj.city" type="checkbox" value="Київ" />
+          {{ $t('pages.filter.city.kyiv') }}
         </label>
         <label>
-          <input type="checkbox" value="odesa" />
-          Одеса
+          <input v-model="filterObj.city" type="checkbox" value="Одеса" />
+          {{ $t('pages.filter.city.odesa') }}
         </label>
         <label>
-          <input type="checkbox" value="lviv" />
-          Львів
+          <input v-model="filterObj.city" type="checkbox" value="Львів" />
+          {{ $t('pages.filter.city.lviv') }}
         </label>
         <label>
-          <input type="checkbox" value="zhytomyr" />
-          Житомир
+          <input v-model="filterObj.city" type="checkbox" value="Житомир" />
+          {{ $t('pages.filter.city.zhytomyr') }}
         </label>
         <label>
-          <input type="checkbox" value="vinnytsia" />
-          Вінниця
+          <input v-model="filterObj.city" type="checkbox" value="Вінниця" />
+          {{ $t('pages.filter.city.vinnytsia') }}
         </label>
       </div>
     </div>
 
     <div class="filter__category">
-      <h3>Заробітна плата</h3>
+      <h3>{{ $t('pages.filter.salary.title') }}</h3>
       <div>
         <label>
-          <input type="checkbox" value="to500" />
-          До 500$
+          <input v-model="filterObj.salary" type="checkbox" value="500" />
+          {{ $t('pages.filter.salary.to500') }}
         </label>
         <label>
-          <input type="checkbox" value="500to1000" />
-          Від 500 до 1000$
+          <input v-model="filterObj.salary" type="checkbox" value="500to1000" />
+          {{ $t('pages.filter.salary.500to1000') }}
         </label>
         <label>
-          <input type="checkbox" value="1000to5000" />
-          Від 1000 до 5000$
+          <input v-model="filterObj.salary" type="checkbox" value="1000to5000" />
+          {{ $t('pages.filter.salary.1000to5000') }}
         </label>
         <label>
-          <input type="checkbox" value="5000to10000" />
-          Від 5000 до 10000$
+          <input v-model="filterObj.salary" type="checkbox" value="5000to10000" />
+          {{ $t('pages.filter.salary.5000to10000') }}
         </label>
         <label>
-          <input type="checkbox" value="more10000" />
-          Більше 10000$
+          <input v-model="filterObj.salary" type="checkbox" value="10000" />
+          {{ $t('pages.filter.salary.more10000') }}
         </label>
       </div>
     </div>
-    <button @click="oncloseFilter" class="apply-button">Застосувати</button>
+    <button @click="oncloseFilter" class="apply-button">{{ $t('buttons.apply') }}</button>
   </aside>
 </template>
 
 <script setup>
 import { professions } from '@/constants/filter'
+import { ref } from 'vue'
 
 const props = defineProps({
   isOpen: {
@@ -160,6 +161,27 @@ const emit = defineEmits()
 function oncloseFilter() {
   emit('close-filter')
 }
+
+const filterObj = ref({
+  profession: [],
+  experience: [],
+  format: [],
+  type: [],
+  language: [],
+  city: [],
+  salary: []
+})
+
+import { useVacanciesStore } from '@/stores/vacancies'
+const vacanciesStore = useVacanciesStore()
+import { watch } from 'vue'
+watch(
+  filterObj,
+  (newValue) => {
+    vacanciesStore.setFilter(newValue)
+  },
+  { deep: true }
+)
 </script>
 
 <style lang="scss" scoped>
@@ -207,7 +229,8 @@ label {
 }
 
 @media only screen and (max-width: 760px) {
-  .close-button, .apply-button {
+  .close-button,
+  .apply-button {
     display: block;
   }
 }

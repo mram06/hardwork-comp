@@ -38,7 +38,7 @@ const router = createRouter({
       meta: {
         requireAuth: false
       },
-      component: () => import('../views/AboutView.vue')
+      component: () => import('@/views/CompanyView.vue')
     },
     {
       path: '/analytics',
@@ -46,7 +46,7 @@ const router = createRouter({
       meta: {
         requireAuth: false
       },
-      component: () => import('../views/AboutView.vue')
+      component: () => import('@/views/AnalyticsView.vue')
     },
     {
       path: '/media',
@@ -54,7 +54,7 @@ const router = createRouter({
       meta: {
         requireAuth: false
       },
-      component: () => import('../views/AboutView.vue')
+      component: () => import('@/views/MediaView.vue')
     },
     {
       path: '/login',

@@ -1,0 +1,103 @@
+{
+  "buttons": {
+    "login": "Log in",
+    "signIn": "Sign up",
+    "logout": "Log out",
+    "allVacancies": "All vacancies",
+    "search": "Search",
+    "respond": "Respond",
+    "subscribe": "Subscribe",
+    "apply": "Apply",
+    "save": "Save",
+    "filters": "Filters"
+  },
+  "header": {
+    "vacancies": "Vacancies",
+    "company": "Company",
+    "analytics": "Analytics",
+    "media": "Media"
+  },
+  "footer": {
+    "about": "About us",
+    "terms": "Terms of service",
+    "policy": "Privacy policy"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "vacancies": "Vacancies"
+  },
+  "pages": {
+    "home": {
+      "title": "IT JOB SEARCH SERVICE",
+      "subscribe": "Subscribe to newsletter"
+    },
+    "vacancies": {
+      "whichProfession": "Which profession do you want to work in?"
+    },
+    "filter": {
+      "title": "Filters",
+      "profession": "Profession",
+      "experience": {
+        "title": "Work experience",
+        "noExperience": "No experience",
+        "1year": "1 year",
+        "2year": "2 years",
+        "3year": "3 years",
+        "5year": "5 years"
+      },
+      "format": {
+        "title": "Work format",
+        "remote": "Remote",
+        "office": "Office",
+        "hybrid": "Hybrid"
+      },
+      "type": {
+        "title": "Employment type",
+        "fulltime": "Full-time",
+        "parttime": "Part-time",
+        "project": "Project-based"
+      },
+      "language": {
+        "title": "Language",
+        "english": "English",
+        "ukrainian": "Ukrainian"
+      },
+      "city": {
+        "title": "City",
+        "kyiv": "Kyiv",
+        "odesa": "Odesa",
+        "lviv": "Lviv",
+        "zhytomyr": "Zhytomyr",
+        "vinnytsia": "Vinnytsia"
+      },
+      "salary": {
+        "title": "Salary",
+        "to500": "Up to $500",
+        "500to1000": "$500 to $1000",
+        "1000to5000": "$1000 to $5000",
+        "5000to10000": "$5000 to $10000",
+        "more10000": "More than $10000"
+      }
+    },
+    "company": {},
+    "analytics": {},
+    "media": {},
+    "login": {
+      "remember": "Remember me"
+    },
+    "profile": {
+      "tabs": {
+        "profile": "Profile",
+        "saved": "Saved",
+        "createResume": "Create resume",
+        "chat": "Chat"
+      },
+      "name": "Name",
+      "lastname": "Lastname",
+      "email": "Email",
+      "phone": "Phone",
+      "aboutMe": "About me",
+      "writeAboutMe": "Write about me"
+    }
+  }
+}

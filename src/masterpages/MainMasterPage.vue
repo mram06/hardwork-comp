@@ -9,13 +9,25 @@
             </div>
             <nav class="header__menu">
               <ul>
-                <router-link :to="{ name: 'vacancies' }"><li>Вакансії</li></router-link>
-                <router-link :to="{ name: 'company' }"><li>Компанія</li></router-link>
-                <router-link :to="{ name: 'analytics' }"><li>Аналітика</li></router-link>
-                <router-link :to="{ name: 'media' }"><li>Медіа</li></router-link>
+                <router-link :to="{ name: 'vacancies' }"
+                  ><li>{{ $t('header.vacancies') }}</li></router-link
+                >
+                <router-link :to="{ name: 'company' }"
+                  ><li>{{ $t('header.company') }}</li></router-link
+                >
+                <router-link :to="{ name: 'analytics' }"
+                  ><li>{{ $t('header.analytics') }}</li></router-link
+                >
+                <router-link :to="{ name: 'media' }"
+                  ><li>{{ $t('header.media') }}</li></router-link
+                >
               </ul>
             </nav>
             <div class="header__tools">
+              <div class="header__tools-locales">
+                <div @click="setLocale('en')">EN</div>
+                <div @click="setLocale('ua')">UA</div>
+              </div>
               <div class="header__tools-search">
                 <img src="@/assets/img/icons/search.svg" />
               </div>
@@ -25,11 +37,13 @@
                   <img @click="toProfile" v-if="user.photoURL" :src="user.photoURL" />
                   <img @click="toProfile" v-else src="@/assets/img/icons/userlogo.svg" />
 
-                  <button @click="onLogout">Вийти</button>
+                  <button @click="onLogout">{{ $t('buttons.logout') }}</button>
                 </template>
                 <template v-else>
-                  <router-link :to="{ name: 'login' }">Увійти</router-link>
-                  <router-link :to="{ name: 'signup' }"><button>Реєстрація</button></router-link>
+                  <router-link :to="{ name: 'login' }">{{ $t('buttons.login') }}</router-link>
+                  <router-link :to="{ name: 'signup' }"
+                    ><button>{{ $t('buttons.signIn') }}</button></router-link
+                  >
                 </template>
               </div>
             </div>
@@ -58,12 +72,18 @@
             </div>
             <div class="footer__info">
               <ul>
-                <router-link to="#"><li>Про сервіс</li></router-link>
+                <router-link to="#"
+                  ><li>{{ $t('footer.about') }}</li></router-link
+                >
                 <router-link to="#"><li>FAQ</li></router-link>
               </ul>
               <ul>
-                <router-link to="#"><li>Умови користування</li></router-link>
-                <router-link to="#"><li>Політика приватності</li></router-link>
+                <router-link to="#"
+                  ><li>{{ $t('footer.terms') }}</li></router-link
+                >
+                <router-link to="#"
+                  ><li>{{ $t('footer.policy') }}</li></router-link
+                >
               </ul>
             </div>
             <div class="footer__socials">
@@ -112,7 +132,7 @@ function onLogout() {
   })
 }
 function toProfile() {
-  router.push({ name: 'profile' })
+  router.push({ name: 'profileManage' })
 }
 
 const isOpen = ref(false)
@@ -123,6 +143,9 @@ function onOpen() {
 onMounted(() => {
   document.title = 'Hardwork'
 })
+
+import { useLocales } from '@/modulesHelpers/i18n'
+const { setLocale } = useLocales()
 </script>
 
 <style lang="scss" scoped>
@@ -182,9 +205,14 @@ onMounted(() => {
       }
       img {
         cursor: pointer;
-        width: 46px;
-        height: 46px;
+        width: 43px;
+        height: 43px;
         border-radius: 50%;
+      }
+    }
+    &-locales {
+      div {
+        cursor: pointer;
       }
     }
   }

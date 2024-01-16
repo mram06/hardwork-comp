@@ -26,8 +26,8 @@
               </div>
             </div>
             <div class="login__method">
-              <router-link :to="{ name: 'login' }">Увійти</router-link>
-              <router-link :to="{ name: 'signup' }">Реєстрація</router-link>
+              <router-link :to="{ name: 'login' }">{{ $t('buttons.login') }}</router-link>
+              <router-link :to="{ name: 'signup' }">{{ $t('buttons.signIn') }}</router-link>
             </div>
             <div class="login__input">
               <input v-model="email" type="email" placeholder="Email" />
@@ -36,7 +36,7 @@
 
             <label class="login__remember">
               <input type="checkbox" />
-              Запам'ятай мене
+              {{ $t('pages.login.remember') }}
             </label>
             <button @click="onAuth(email, password)" class="login__button" :disabled="!isDataValid">
               {{ actionTitle }}
@@ -57,9 +57,13 @@ const props = defineProps({
     default: 'login'
   }
 })
+import { useLocales } from '@/modulesHelpers/i18n'
+const { t } = useLocales()
 
 const loginMethod = computed(() => (props.method === 'signup' ? 'signup' : 'login'))
-const actionTitle = computed(() => (loginMethod.value === 'login' ? 'Увійти' : 'Зареєструватися'))
+const actionTitle = computed(() =>
+  loginMethod.value === 'login' ? t('buttons.login') : t('buttons.signin')
+)
 
 import { useAuthStore } from '@/stores/auth'
 const authStore = useAuthStore()

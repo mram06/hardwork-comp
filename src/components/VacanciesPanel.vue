@@ -1,6 +1,10 @@
 <template>
   <div class="item-container">
-    <vacancies-item v-for="vacancy in vacanciesList" :key="vacancy.id" :item-obj="vacancy" />
+    <vacancies-item
+      v-for="vacancy in filteredVacanciesList"
+      :key="vacancy.id"
+      :item-obj="vacancy"
+    />
   </div>
 </template>
 
@@ -12,6 +16,11 @@ import { computed } from 'vue'
 import { useVacanciesStore } from '@/stores/vacancies'
 const vacanciesStore = useVacanciesStore()
 const vacanciesList = computed(() => vacanciesStore.getItemsList ?? [])
+
+import { isCorrespondToFilter } from '@/stores/helpers/filter'
+const filteredVacanciesList = computed(() =>
+  vacanciesList.value.filter((item) => isCorrespondToFilter(item, vacanciesStore.filterObj))
+)
 </script>
 
 <style lang="scss" scoped>
