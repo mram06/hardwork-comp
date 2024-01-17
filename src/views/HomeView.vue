@@ -24,6 +24,7 @@
 
 <script setup>
 import MainMasterPage from '@/masterpages/MainMasterPage.vue'
+import { useVacanciesStore } from '@/stores/vacancies'
 
 import { useRouter } from 'vue-router'
 const router = useRouter()

@@ -3,7 +3,7 @@
     <vacancies-item
       v-for="vacancy in filteredVacanciesList"
       :key="vacancy.id"
-      :item-obj="vacancy"
+      :item-obj="{id, ...vacancy}"
     />
   </div>
 </template>

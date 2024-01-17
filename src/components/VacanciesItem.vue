@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="item__actions">
-        <div class="item__actions-save">
+        <div @click="onAddToSaved(itemObj)" class="item__actions-save">
           <font-awesome-icon class="fa-lg" :icon="['far', 'heart']" style="color: #000000" />
         </div>
         <button>{{ $t('buttons.respond') }}</button>
@@ -60,6 +60,34 @@ const date = computed(() => {
     day: (date.getDate() + 1).toString().padStart(2, '0'),
     month: (date.getMonth() + 1).toString().padStart(2, '0'),
     year: date.getFullYear()
+  }
+})
+
+import { useSavedStore } from '@/stores/saved'
+const savedStore = useSavedStore()
+import { useAuthStore } from '@/stores/auth'
+import { onMounted } from 'vue'
+const authStore = useAuthStore()
+
+async function onAddToSaved(itemObj) {
+  if (authStore.getUser) {
+    if (savedStore.getCurrentItem.savedVacancies) {
+      await savedStore.addItemToArray(authStore.getUser.uid, 'savedVacancies', itemObj)
+    } else {
+      await savedStore.addItemWithCustomId({
+        id: authStore.getUser.uid,
+        data: {
+          savedVacancies: [itemObj]
+        }
+      })
+    }
+    await savedStore.loadItemById(authStore.getUser.uid)
+  }
+}
+
+onMounted(() => {
+  if (authStore.getUser) {
+    savedStore.loadItemById(authStore.getUser.uid)
   }
 })
 </script>
@@ -130,6 +158,13 @@ const date = computed(() => {
     }
     &__actions {
       align-self: flex-end;
+    }
+    &__company {
+      gap: 10px;
+    }
+    &__img {
+      width: 50px;
+      height: 50px;
     }
   }
 }

@@ -62,7 +62,7 @@ const { t } = useLocales()
 
 const loginMethod = computed(() => (props.method === 'signup' ? 'signup' : 'login'))
 const actionTitle = computed(() =>
-  loginMethod.value === 'login' ? t('buttons.login') : t('buttons.signin')
+  loginMethod.value === 'login' ? t('buttons.login') : t('buttons.signIn')
 )
 
 import { useAuthStore } from '@/stores/auth'

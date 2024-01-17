@@ -196,6 +196,7 @@ const userMatchValue = ref(45)
   }
 
   &__usermatch {
+    min-width: 285px;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -223,6 +224,39 @@ const userMatchValue = ref(45)
         background: url('@/assets/img/icons/check.svg') 0 -3px no-repeat;
       }
     }
+  }
+}
+@media only screen and (max-width: 980px) {
+  .vacancy {
+    &__body {
+      padding: 20px;
+    }
+  }
+  .description {
+    &__body {
+      padding: 20px;
+    }
+  }
+}
+@media only screen and (max-width: 760px) {
+  .vacancy {
+    &__body {
+      min-height: 260px;
+      gap: 10px;
+    }
+  }
+
+  .description {
+    &__body {
+      flex-wrap: wrap;
+    }
+    &__usermatch {
+      margin: 0 auto;
+    }
+  }
+  .row {
+    gap: 20px;
+    flex-wrap: wrap;
   }
 }
 </style>

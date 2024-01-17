@@ -97,7 +97,8 @@
       "email": "Email",
       "phone": "Phone",
       "aboutMe": "About me",
-      "writeAboutMe": "Write about me"
+      "writeAboutMe": "Write about me",
+      "noSaved": "You haven't added any vacancy yet"
     }
   }
 }

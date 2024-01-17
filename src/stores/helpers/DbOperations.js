@@ -64,27 +64,15 @@ class DbOperations {
   addItemToArray(id, arrayProperty, value) {
     return new Promise((resolve, reject) => {
       this.getItemById(id).then((item) => {
-        if (item.appointments) {
-          updateDoc(doc(this.dbCollection, id), {
-            [arrayProperty]: arrayUnion(value)
+        updateDoc(doc(this.dbCollection, id), {
+          [arrayProperty]: arrayUnion(value)
+        })
+          .then(() => {
+            resolve(true)
           })
-            .then(() => {
-              resolve(true)
-            })
-            .catch((error) => {
-              reject(error)
-            })
-        } else {
-          this.addItemWithCustomId(id, {
-            [arrayProperty]: [value]
+          .catch((error) => {
+            reject(error)
           })
-            .then(() => {
-              resolve(true)
-            })
-            .catch((error) => {
-              reject(error)
-            })
-        }
       })
     })
   }

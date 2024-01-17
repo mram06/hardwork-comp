@@ -128,7 +128,7 @@ function onSearch() {
     left: 0;
     transition: top 0.5s;
     top: 100vh;
-    background: #a0a0a0;
+    background: #e1e1e1;
 
     border-radius: 25px 25px 0 0;
     width: 100%;

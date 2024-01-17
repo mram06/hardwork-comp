@@ -25,8 +25,8 @@
             </nav>
             <div class="header__tools">
               <div class="header__tools-locales">
-                <div @click="setLocale('en')">EN</div>
-                <div @click="setLocale('ua')">UA</div>
+                <div @click="setLocale('en')" :class="{ 'active-lang': locale == 'en' }">EN</div>
+                <div @click="setLocale('ua')" :class="{ 'active-lang': locale == 'ua' }">UA</div>
               </div>
               <div class="header__tools-search">
                 <img src="@/assets/img/icons/search.svg" />
@@ -145,7 +145,7 @@ onMounted(() => {
 })
 
 import { useLocales } from '@/modulesHelpers/i18n'
-const { setLocale } = useLocales()
+const { setLocale, locale } = useLocales()
 </script>
 
 <style lang="scss" scoped>
@@ -169,6 +169,7 @@ const { setLocale } = useLocales()
   &__row {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     align-items: center;
   }
 
@@ -211,8 +212,12 @@ const { setLocale } = useLocales()
       }
     }
     &-locales {
+      font-weight: 500;
       div {
         cursor: pointer;
+      }
+      .active-lang {
+        font-weight: 700;
       }
     }
   }
@@ -360,7 +365,7 @@ main {
     }
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 500px) {
   .header {
     &__tools {
       position: absolute;
@@ -369,9 +374,16 @@ main {
         justify-content: space-between;
         gap: 12px;
       }
+      &-locales {
+        display: flex;
+        gap: 15px;
+        position: absolute;
+        top: 200px;
+        font-size: 18px;
+      }
     }
     &.open &__tools {
-      left: 10px;
+      left: 20px;
       transition: left 0.5s;
     }
   }
