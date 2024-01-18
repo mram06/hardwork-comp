@@ -1,10 +1,12 @@
 <template>
   <div class="item-container">
     <vacancies-item
+      v-if="filteredVacanciesList.length"
       v-for="vacancy in filteredVacanciesList"
       :key="vacancy.id"
-      :item-obj="{id, ...vacancy}"
+      :item-obj="{ id, ...vacancy }"
     />
+    <h3 v-else>{{ $t('pages.vacancies.notFound') }}</h3>
   </div>
 </template>
 

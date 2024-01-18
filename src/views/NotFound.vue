@@ -1,7 +1,7 @@
 <template>
   <main-master-page>
     <div class="container">
-      <h2>#404 Сторінка не знайдена</h2>
+      <h2>#404 {{ $t('pages.notFound') }}</h2>
     </div>
   </main-master-page>
 </template>

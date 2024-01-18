@@ -3,7 +3,7 @@
     <div class="row">
       <div class="item__about">
         <div class="item__img">
-          <img :src="itemObj.imgSrc" alt="" />
+          <img :src="itemObj.imgSrc || defaultLogo" />
         </div>
         <div>
           <router-link :to="{ name: 'vacancy', params: { id: itemObj.id }, props: itemObj }"
@@ -53,7 +53,6 @@ const props = defineProps({
     required: true
   }
 })
-
 const date = computed(() => {
   const date = new Date(props.itemObj.date.seconds * 1000)
   return {
@@ -85,6 +84,8 @@ async function onAddToSaved(itemObj) {
   }
 }
 
+import defaultLogo from '@/assets/img/icons/default_company_logo.svg'
+
 onMounted(() => {
   if (authStore.getUser) {
     savedStore.loadItemById(authStore.getUser.uid)
@@ -115,6 +116,9 @@ onMounted(() => {
     height: 64px;
     overflow: hidden;
     border-radius: 64px;
+    img {
+      width: 100%;
+    }
   }
 
   &__company {

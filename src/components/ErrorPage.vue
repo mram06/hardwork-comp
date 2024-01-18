@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>Виникла помилка</h2>
+    <h2>{{ $t('pages.error') }}</h2>
     <font-awesome-icon :icon="['fas', 'triangle-exclamation']" size="6x" class="icon" />
   </div>
 </template>

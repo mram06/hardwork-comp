@@ -32,7 +32,8 @@
       "subscribe": "Subscribe to newsletter"
     },
     "vacancies": {
-      "whichProfession": "Which profession do you want to work in?"
+      "whichProfession": "Which profession do you want to work in?",
+      "notFound": "Nothing found with the specified filters"
     },
     "filter": {
       "title": "Filters",
@@ -99,6 +100,8 @@
       "aboutMe": "About me",
       "writeAboutMe": "Write about me",
       "noSaved": "You haven't added any vacancy yet"
-    }
+    },
+    "notFound": "Page not found",
+    "error": "An error occurred"
   }
 }
