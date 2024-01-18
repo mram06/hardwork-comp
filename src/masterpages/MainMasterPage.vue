@@ -140,10 +140,6 @@ function onOpen() {
   isOpen.value = !isOpen.value
 }
 
-onMounted(() => {
-  document.title = 'Hardwork'
-})
-
 import { useLocales } from '@/modulesHelpers/i18n'
 const { setLocale, locale } = useLocales()
 </script>
